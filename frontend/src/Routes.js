@@ -7,6 +7,7 @@ import Register from "./containers/Register/Register";
 import Pictures from "./containers/Pictures/Pictures";
 import NewPicture from "./containers/NewPicture/NewPicture";
 import SinglePicture from "./containers/SinglePicture/SinglePicture";
+import UserPictures from "./containers/UserPictures/UserPictures";
 
 
 const Routes = () => {
@@ -17,6 +18,8 @@ const Routes = () => {
 			<Route path="/login" exact component={Login} />
 			<Route path="/pictures/new" exact component={NewPicture} />
 			<Route path="/pictures/:id" exact component={SinglePicture} />
+			<Route path="/myPictures" exact component={UserPictures} />
+
 		</Switch>
 	);
 };

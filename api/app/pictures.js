@@ -21,21 +21,34 @@ const upload = multer({storage});
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-	try {
-		const pictures = await Picture.find().populate('user', '_id displayName');
+	// try {
+	// 	const pictures = await Picture.find().populate('user', '_id displayName');
+	//
+	// 	if (!pictures) {
+	// 		return res.status(404).send({message: "Not found!"});
+	// 	}
+	// 	return res.send(pictures);
+	// } catch (error) {
+	// 	return res.status(404).send({message: "Not found", error});
+	// }
 
-		if (!pictures) {
-			return res.status(404).send({message: "Not found!"});
-		}
+	let query = {};
+
+	if (req.query.user) {
+		query.user = req.query.user;
+	}
+	try {
+		const pictures = await Picture.find(query).populate('user');
+
 		return res.send(pictures);
 	} catch (error) {
-		return res.status(404).send({message: "Not found", error});
+		return res.status(404).send({message: 'Not found', error});
 	}
 });
 
 router.get('/myPictures', auth, async (req, res) => {
 	try {
-		const pictures = await Picture.find({user: req.user._id});
+		const pictures = await Picture.find({user: req.user._id}).populate('user', '_id displayName');
 
 		if (!pictures) {
 			return res.status(404).send({message: "Not found!"});
@@ -67,6 +80,10 @@ router.post('/', [auth, upload.single('image')], async (req, res) => {
 		pictureData.image = req.file.filename;
 	} else {
 		return res.status(400).send({error: "Please select a picture"});
+	}
+
+	if (!pictureData.title) {
+		return res.status(400).send({error: "Please enter a title"});
 	}
 
 	const picture = new Picture({
