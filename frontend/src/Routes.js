@@ -19,7 +19,6 @@ const Routes = () => {
 			<Route path="/pictures/new" exact component={NewPicture} />
 			<Route path="/pictures/:id" exact component={SinglePicture} />
 			<Route path="/myPictures" exact component={UserPictures} />
-
 		</Switch>
 	);
 };

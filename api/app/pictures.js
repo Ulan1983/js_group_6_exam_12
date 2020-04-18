@@ -21,17 +21,6 @@ const upload = multer({storage});
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-	// try {
-	// 	const pictures = await Picture.find().populate('user', '_id displayName');
-	//
-	// 	if (!pictures) {
-	// 		return res.status(404).send({message: "Not found!"});
-	// 	}
-	// 	return res.send(pictures);
-	// } catch (error) {
-	// 	return res.status(404).send({message: "Not found", error});
-	// }
-
 	let query = {};
 
 	if (req.query.user) {

@@ -7,7 +7,7 @@ const UserPictureList = props => {
 
 	return (
 		<>
-			<Card style={{marginTop: '10px'}}>
+			<Card style={{marginTop: '10px', textAlign: 'center'}}>
 				<CardBody>
 					<Link to={"/pictures/" + props.id} style={{textDecoration: 'none', color: 'black'}}>
 						<img src={apiURL + '/uploads/' + props.image} alt="" style={{maxWidth: '200px'}}/>
@@ -15,7 +15,7 @@ const UserPictureList = props => {
 					</Link>
 				</CardBody>
 				<FormGroup row>
-					<Col sm={{offset: 2, size: 10}}>
+					<Col sm={{offset: 1, size: 10}}>
 						<Button type="submit" color="primary"
 								onClick={props.delete}
 						>

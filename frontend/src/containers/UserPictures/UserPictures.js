@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {deletePicture, fetchUserPictures} from "../../store/actions/picturesActions";
 import {connect} from "react-redux";
-import {Col, Row} from "reactstrap";
 import UserPictureList from "../../components/UserPictureList/UserPictureList";
 import {Link} from "react-router-dom";
+import {Col, Row} from "reactstrap";
 
 class UserPictures extends Component {
 	async componentDidMount() {
@@ -11,7 +11,7 @@ class UserPictures extends Component {
 	}
 
 	deletePicture = async (id) => {
-		await this.props.deletePicture(id);
+		await this.props.deletePicture(id)
 	};
 
 	render() {
@@ -20,8 +20,7 @@ class UserPictures extends Component {
 				<h4 style={{textAlign: 'center'}}>{this.props.user.displayName}'s gallery</h4>
 				<Link
 					to='/pictures/new'
-					style={{textDecoration: 'none', color: 'black',
-						marginLeft: '10px', marginTop: '30px', fontSize: '20px'}}
+					style={{textDecoration: 'none', color: 'blue', marginTop: '30px', fontSize: '18px'}}
 				>
 					Add new photo
 				</Link>
@@ -43,13 +42,13 @@ class UserPictures extends Component {
 }
 
 const mapStateToProps = state => ({
-	userPictures: state.pictures.userPictures,
-	user: state.users.user
+	user: state.users.user,
+	userPictures: state.pictures.userPictures
 });
 
 const mapDispatchToProps = dispatch => ({
 	fetchUserPictures: () => dispatch(fetchUserPictures()),
-	deletePicture: id => dispatch(deletePicture(id)),
+	deletePicture: id => dispatch(deletePicture(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPictures);

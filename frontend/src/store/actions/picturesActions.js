@@ -34,13 +34,6 @@ export const deletePictureFailure = error => ({type: DELETE_PICTURE_FAILURE, err
 
 export const fetchPictures = (userId) => {
 	return async (dispatch) => {
-		// try {
-		// 	const response = await axiosApi.get('/pictures');
-		// 	dispatch(fetchPicturesSuccess(response.data));
-		// } catch (error) {
-		// 	dispatch(fetchPicturesFailure(error));
-		// }
-
 		let url = '/pictures';
 
 		if (userId) {
