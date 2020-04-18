@@ -20,11 +20,7 @@ const UserMenu = ({user, logout}) => {
 			</DropdownToggle>
 			<DropdownMenu right style={{textAlign: 'center'}}>
 				<DropdownItem>
-					<Link to='/pictures/new' style={{textDecoration: 'none', color: 'black', marginLeft: '10px'}}>Add picture</Link>
-				</DropdownItem>
-				<DropdownItem divider />
-				<DropdownItem>
-					<Link to='/pictures/myPictures' style={{textDecoration: 'none', color: 'black', marginLeft: '10px'}}>My pictures</Link>
+					<Link to='/myPictures' style={{textDecoration: 'none', color: 'black', marginLeft: '10px'}}>My pictures</Link>
 				</DropdownItem>
 				<DropdownItem divider />
 				<DropdownItem onClick={logout}>

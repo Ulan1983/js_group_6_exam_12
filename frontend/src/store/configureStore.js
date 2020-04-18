@@ -1,9 +1,11 @@
 import {createBrowserHistory} from "history";
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import {connectRouter, routerMiddleware} from "connected-react-router";
-import usersReducer from "./reducers/usersReducer";
 import thunkMiddleware from "redux-thunk";
+
 import {loadFromLocalStorage, localStorageMiddleware} from "./localStorage";
+import usersReducer from "./reducers/usersReducer";
+import picturesReducer from "./reducers/picturesReducer";
 
 export const history = createBrowserHistory();
 
@@ -12,6 +14,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
 	router: connectRouter(history),
 	users: usersReducer,
+	pictures: picturesReducer
 });
 
 const middleware = [
